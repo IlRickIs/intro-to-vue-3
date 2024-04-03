@@ -4,7 +4,72 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Solution to exercise1</title>
+    <style>
+      .blog-post{
+        border-top: 1px solid black;
+      }
+      .blog-post:first-child{
+        border-top: none;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1> this is blog with vue3!</h1>
+
+    <div class="intro">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+          Tempora, quidem reiciendis tenetur recusandae dolore voluptatum 
+          repudiandae aliquam. Quos debitis numquam unde cupiditate placeat 
+          harum doloribus corrupti magni suscipit natus ducimus alias amet, 
+          quam incidunt est ad possimus deleniti fugiat maiores.
+      </p>
+  </div>
+
+  <div id="app">
+    <div v-if=" posts.length === 0">
+      <p>{{noPostsMessage}}</p>
+    </div>
+    <div v-else>
+      <div v-for="post in posts" class="blog-post">
+        <h2>{{post.title}}</h2>
+        <p>author: @{{post.author}}</p>
+        <p>content: {{post.content}}</p>
+  </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data(){
+          return{
+            posts: [
+              {
+                title: 'title1',
+                author: 'author1',
+                content: 'content1'
+              },
+              {
+                title: 'title2',
+                author: 'author2',
+                content: 'content2'
+              },
+              {
+                title: 'title3',
+                author: 'author3',
+                content: 'content3'
+              },
+              {
+                title: 'title4',
+                author: 'author4',
+                content: 'content4'}
+              
+              ],
+            noPostsMessage: 'No posts to display'
+          }
+        }
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
 </html>
